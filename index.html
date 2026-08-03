@@ -412,7 +412,7 @@
                 <div class="relative w-48 h-48 sm:w-64 sm:h-64 group cursor-pointer mt-4 sm:mt-0">
                     <div class="absolute inset-0 bg-gradient-to-tr from-brand-yellow to-yellow-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500 animate-pulse-slow"></div>
                     <div class="relative w-full h-full rounded-2xl border-4 border-white dark:border-darkCard shadow-2xl overflow-hidden bg-brand-yellow transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2">
-                        <img src="fotoku.jpg" onerror="this.onerror=null; this.src='Web Portfolio Deploy/fotoku.jpg';" alt="Alan Jalu Prasetyo" class="w-full h-full object-cover">
+                        <img id="profile-img" src="foto1.jpg" onerror="this.onerror=null; this.src='fotoku.jpg';" alt="Alan Jalu Prasetyo" class="w-full h-full object-cover" style="transition: opacity 0.5s ease-in-out;">
                     </div>
                     <!-- Blue Verified Badge (Enlarged Instagram Style) -->
                     <div class="absolute -top-3.5 -left-3.5 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12 drop-shadow-xl z-20" title="Verified IT Professional">
@@ -421,6 +421,51 @@
                             <path d="M9 12.5l2.5 2.5L16 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="highlights" class="scroll-mt-20 sm:scroll-mt-24 pt-6 pb-4 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
+        <div class="w-full reveal-on-scroll">
+            <div class="flex items-center gap-4 mb-6">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white whitespace-nowrap flex items-center">
+                    <i class="fa-solid fa-chart-line text-primary-500 mr-3 animate-pulse"></i> <span data-i18n="sec_highlights">Professional Highlights</span>
+                </h2>
+                <div class="h-0.5 flex-grow bg-slate-200 dark:bg-slate-700"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Highlight 1: Experience Years -->
+                <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-briefcase text-xl"></i>
+                    </div>
+                    <span id="highlight-exp" class="text-base sm:text-lg md:text-xl font-black text-slate-950 dark:text-white leading-tight">...</span>
+                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold mt-1" data-i18n="hl_experience">Experience Duration</span>
+                </div>
+                <!-- Highlight 2: Education Count -->
+                <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <span id="highlight-edu" class="text-2xl sm:text-3xl font-black text-slate-955 dark:text-white">...</span>
+                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold mt-1" data-i18n="hl_education">Education Programs</span>
+                </div>
+                <!-- Highlight 3: Certificates & Training -->
+                <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-award text-xl"></i>
+                    </div>
+                    <span id="highlight-certs" class="text-2xl sm:text-3xl font-black text-slate-955 dark:text-white">...</span>
+                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold mt-1" data-i18n="hl_certs">Certificates &amp; Training</span>
+                </div>
+                <!-- Highlight 4: Projects Count -->
+                <div class="bg-white dark:bg-darkCard p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center text-center group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-diagram-project text-xl"></i>
+                    </div>
+                    <span id="highlight-projects" class="text-2xl sm:text-3xl font-black text-slate-955 dark:text-white">...</span>
+                    <span class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-bold mt-1" data-i18n="hl_projects">Projects Accomplished</span>
                 </div>
             </div>
         </div>
@@ -1697,7 +1742,12 @@
                 cv_title: "Resume / Curriculum Vitae",
                 cv_desc: "If you would like to review my complete professional background or print a physical copy for your records, please download my most updated CV below.",
                 cv_btn: "Download Updated CV (.pdf)",
-                footer_connect: "Let's connect & work together"
+                footer_connect: "Let's connect & work together",
+                sec_highlights: "Professional Highlights",
+                hl_experience: "Experience Duration",
+                hl_education: "Education Programs",
+                hl_certs: "Certificates & Training",
+                hl_projects: "Projects Accomplished"
             },
             id: {
                 nav_about: "Tentang Saya",
@@ -1750,7 +1800,12 @@
                 cv_title: "Resume / Curriculum Vitae",
                 cv_desc: "Jika Anda ingin meninjau latar belakang profesional saya secara lengkap atau mencetaknya sebagai arsip, silakan unduh CV terbaru saya di bawah ini.",
                 cv_btn: "Unduh CV Terbaru (.pdf)",
-                footer_connect: "Mari terhubung & bekerja sama"
+                footer_connect: "Mari terhubung & bekerja sama",
+                sec_highlights: "Sorotan Profesional",
+                hl_experience: "Durasi Pengalaman",
+                hl_education: "Program Pendidikan",
+                hl_certs: "Sertifikasi & Pelatihan",
+                hl_projects: "Proyek Diselesaikan"
             },
             de: {
                 nav_about: "Über mich",
@@ -1803,7 +1858,12 @@
                 cv_title: "Resume / Curriculum Vitae",
                 cv_desc: "Laden Sie bitte meinen aktuellsten Lebenslauf unten herunter.",
                 cv_btn: "Aktualisierten Lebenslauf herunterladen (.pdf)",
-                footer_connect: "Lassen Sie uns verbinden & zusammenarbeiten"
+                footer_connect: "Lassen Sie uns verbinden & zusammenarbeiten",
+                sec_highlights: "Berufliche Highlights",
+                hl_experience: "Dauer der Erfahrung",
+                hl_education: "Bildungsprogramme",
+                hl_certs: "Zertifikate & Schulungen",
+                hl_projects: "Abgeschlossene Projekte"
             },
             ja: {
                 nav_about: "私について",
@@ -1856,7 +1916,12 @@
                 cv_title: "履歴書 / 職務経歴書",
                 cv_desc: "経歴の全容確認や印刷用のPDF版履歴書は、以下からダウンロードできます。",
                 cv_btn: "最新のCVをダウンロード (.pdf)",
-                footer_connect: "お問い合わせ・お仕事のご依頼"
+                footer_connect: "お問い合わせ・お仕事のご依頼",
+                sec_highlights: "実績ハイライト",
+                hl_experience: "経験年수",
+                hl_education: "教育プログラム",
+                hl_certs: "資格・研修",
+                hl_projects: "担当プロジェクト"
             },
             ko: {
                 nav_about: "소개",
@@ -1909,7 +1974,12 @@
                 cv_title: "이력서 / CV",
                 cv_desc: "전체 경력 검토 및 인쇄용 이력서는 아래에서 다운로드하실 수 있습니다.",
                 cv_btn: "최신 이력서 다운로드 (.pdf)",
-                footer_connect: "문의 및 협업하기"
+                footer_connect: "문의 및 협업하기",
+                sec_highlights: "주요 경력 하이라이트",
+                hl_experience: "경력 기간",
+                hl_education: "교육 과정",
+                hl_certs: "자격증 및 교육",
+                hl_projects: "완료된 프로젝트"
             }
         };
 
@@ -1942,6 +2012,9 @@
                     else checkEl.classList.add('hidden');
                 }
             });
+
+            // Refresh Dynamic Professional Highlights translations
+            updateProfessionalHighlights();
         }
 
         function selectLanguage(lang) {
@@ -1969,11 +2042,134 @@
             }
         }, { passive: true });
 
+        // --- Dynamic Counter/Highlights calculation ---
+        function calculateTotalExperience() {
+            const dateSpans = document.querySelectorAll('#experience-timeline .timeline-item span.whitespace-nowrap');
+            let totalMonths = 0;
+            const monthNames = {
+                jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+            };
+
+            dateSpans.forEach(span => {
+                const text = span.textContent.trim();
+                const parts = text.split('-').map(s => s.trim());
+                if (parts.length === 2) {
+                    const startStr = parts[0];
+                    const endStr = parts[1];
+
+                    const startParts = startStr.split(' ');
+                    if (startParts.length !== 2) return;
+                    const startMonth = monthNames[startParts[0].toLowerCase().substring(0, 3)];
+                    const startYear = parseInt(startParts[1]);
+
+                    let endMonth, endYear;
+                    if (endStr.toLowerCase() === 'present') {
+                        const now = new Date();
+                        endMonth = now.getMonth();
+                        endYear = now.getFullYear();
+                    } else {
+                        const endParts = endStr.split(' ');
+                        if (endParts.length !== 2) return;
+                        endMonth = monthNames[endParts[0].toLowerCase().substring(0, 3)];
+                        endYear = parseInt(endParts[1]);
+                    }
+
+                    if (isNaN(startYear) || isNaN(endYear) || startMonth === undefined || endMonth === undefined) return;
+
+                    const diffMonths = (endYear - startYear) * 12 + (endMonth - startMonth);
+                    totalMonths += Math.max(0, diffMonths + 1);
+                }
+            });
+            return getLocalizedDuration(totalMonths, currentLang);
+        }
+
+        function getLocalizedDuration(totalMonths, lang) {
+            const years = Math.floor(totalMonths / 12);
+            const months = totalMonths % 12;
+            
+            const translations = {
+                en: { year: 'Yr', years: 'Yrs', month: 'Mo', months: 'Mos' },
+                id: { year: 'Thn', years: 'Thn', month: 'Bln', months: 'Bln' },
+                de: { year: 'J.', years: 'J.', month: 'Mon.', months: 'Mon.' },
+                ja: { year: '年', years: '年', month: 'ヶ月', months: 'ヶ月' },
+                ko: { year: '년', years: '년', month: '개월', months: '개월' }
+            };
+            
+            const t = translations[lang] || translations['en'];
+            
+            let result = "";
+            if (years > 0) {
+                result += `${years} ${years === 1 ? t.year : t.years}`;
+            }
+            if (months > 0) {
+                if (result !== "") result += " ";
+                result += `${months} ${months === 1 ? t.month : t.months}`;
+            }
+            return result || `0 ${t.months}`;
+        }
+
+        function updateProfessionalHighlights() {
+            // Experience Duration
+            const expText = calculateTotalExperience();
+            const expEl = document.getElementById('highlight-exp');
+            if (expEl) expEl.textContent = expText;
+
+            // Education Count
+            const eduCount = document.querySelectorAll('#education > .group, #education > .shine-effect').length;
+            const eduEl = document.getElementById('highlight-edu');
+            if (eduEl) eduEl.textContent = eduCount;
+
+            // Certifications Count
+            const certCount = document.querySelectorAll('#certifications .grid > div').length;
+            const certEl = document.getElementById('highlight-certs');
+            if (certEl) certEl.textContent = certCount;
+
+            // Projects Count
+            const projCount = document.querySelectorAll('#projects .project-card').length;
+            const projEl = document.getElementById('highlight-projects');
+            if (projEl) projEl.textContent = projCount;
+        }
+
+        // --- Profile Photo Auto-Slider ---
+        const profilePhotos = [
+            "foto1.jpg",
+            "foto2.jpg",
+            "foto3.jpg",
+            "foto4.jpg",
+            "foto5.jpg",
+            "foto6.jpg"
+        ];
+        let currentPhotoIndex = 0;
+        
+        function startProfileSlider() {
+            const imgEl = document.getElementById('profile-img');
+            if (!imgEl) return;
+            
+            setInterval(() => {
+                currentPhotoIndex = (currentPhotoIndex + 1) % profilePhotos.length;
+                const nextSrc = profilePhotos[currentPhotoIndex];
+                
+                // Preload image
+                const tempImg = new Image();
+                tempImg.onload = () => {
+                    imgEl.style.opacity = 0;
+                    setTimeout(() => {
+                        imgEl.src = nextSrc;
+                        imgEl.style.opacity = 1;
+                    }, 500);
+                };
+                // Silent fallback on error
+                tempImg.src = nextSrc;
+            }, 5000);
+        }
+
         // Initialize App Calls & 24h Realtime Polling
         window.addEventListener('DOMContentLoaded', () => {
             fetchVisitorData();
             fetchPublicIP();
             updateLanguage(currentLang);
+            startProfileSlider();
             setInterval(fetchVisitorData, 15000);
         });
 
