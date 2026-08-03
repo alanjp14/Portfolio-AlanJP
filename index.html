@@ -410,8 +410,7 @@
             <!-- Profile Image -->
             <div class="order-1 lg:order-2 flex justify-center lg:justify-end opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
                 <div class="relative w-48 h-48 sm:w-64 sm:h-64 group cursor-pointer mt-4 sm:mt-0">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-yellow to-yellow-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500 animate-pulse-slow"></div>
-                    <div class="relative w-full h-full rounded-2xl border-4 border-white dark:border-darkCard shadow-2xl overflow-hidden bg-brand-yellow transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2">
+                    <div class="relative w-full h-full rounded-2xl border-4 border-white dark:border-darkCard shadow-2xl overflow-hidden transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2">
                         <img id="profile-img" src="foto1.jpg" onerror="this.onerror=null; this.src='fotoku.jpg';" alt="Alan Jalu Prasetyo" class="w-full h-full object-cover" style="transition: opacity 0.5s ease-in-out;">
                     </div>
                     <!-- Blue Verified Badge (Enlarged Instagram Style) -->
@@ -2089,9 +2088,9 @@
             const months = totalMonths % 12;
             
             const translations = {
-                en: { year: 'Yr', years: 'Yrs', month: 'Mo', months: 'Mos' },
-                id: { year: 'Thn', years: 'Thn', month: 'Bln', months: 'Bln' },
-                de: { year: 'J.', years: 'J.', month: 'Mon.', months: 'Mon.' },
+                en: { year: 'year', years: 'years', month: 'month', months: 'months' },
+                id: { year: 'tahun', years: 'tahun', month: 'bulan', months: 'bulan' },
+                de: { year: 'jahr', years: 'jahre', month: 'monat', months: 'monate' },
                 ja: { year: '年', years: '年', month: 'ヶ月', months: 'ヶ月' },
                 ko: { year: '년', years: '년', month: '개월', months: '개월' }
             };
