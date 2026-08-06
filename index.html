@@ -204,7 +204,10 @@
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-darkBg dark:text-slate-100 transition-colors duration-300 antialiased pt-16 sm:pt-0"> 
+<body class="bg-slate-50 text-slate-900 dark:bg-gradient-to-br dark:from-[#020b1f] dark:via-[#042a3f] dark:to-[#1c0c30] dark:bg-fixed dark:text-slate-100 transition-colors duration-300 antialiased pt-16 sm:pt-0 overflow-x-hidden"> 
+
+    <!-- Interactive Programming & Networking Canvas Background -->
+    <canvas id="techCanvas" class="fixed inset-0 w-full h-full -z-10 pointer-events-none"></canvas>
 
     <!-- Sleek & Compact Live 24h Realtime Stats Box (Desktop Only) -->
     <div class="hidden sm:flex fixed top-2 left-1/2 -translate-x-1/2 z-[60] flex-col items-start justify-center bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-3.5 py-1 rounded-xl border border-slate-200 dark:border-slate-700/80 pointer-events-none shadow-xs text-[10px] font-bold text-slate-800 dark:text-slate-200 gap-0.5 min-w-[100px]">
@@ -2183,6 +2186,207 @@
                 navbar.classList.add('border-b');
             }
         });
+    </script>
+
+    <!-- HTML5 Canvas Tech & Networking Animation -->
+    <script>
+        const canvas = document.getElementById('techCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let nodes = [];
+        let symbols = [];
+        const maxNodes = 60;
+        const maxSymbols = 15;
+        let mouse = { x: -1000, y: -1000, radius: 200 };
+        
+        const codeSymbols = ['{ }', '</>', '[ ]', ';', '=>', '||', '&&', '01', 'function()', 'async', 'await'];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+        
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+        window.addEventListener('touchend', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        class TechNode {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1.0;
+                this.vy = (Math.random() - 0.5) * 1.0;
+                this.size = Math.random() * 2.5 + 1.5;
+                this.pulse = Math.random() * Math.PI;
+            }
+            update() {
+                if (this.x > width || this.x < 0) this.vx = -this.vx;
+                if (this.y > height || this.y < 0) this.vy = -this.vy;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.pulse += 0.05;
+                
+                // Repel slightly from mouse
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < 100) {
+                    this.x -= (dx / distance) * 0.5;
+                    this.y -= (dy / distance) * 0.5;
+                }
+            }
+            draw(isDark) {
+                const glow = Math.sin(this.pulse) * 0.5 + 0.5;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = isDark 
+                    ? `rgba(6, 182, 212, ${0.4 + glow * 0.6})` // Cyan glow
+                    : `rgba(14, 165, 233, ${0.4 + glow * 0.4})`; // Sky blue
+                
+                if (isDark) {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#06b6d4';
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset
+            }
+        }
+
+        class FloatingSymbol {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height + height; // Start below screen
+                this.text = codeSymbols[Math.floor(Math.random() * codeSymbols.length)];
+                this.speed = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.15 + 0.05;
+                this.size = Math.floor(Math.random() * 16 + 10);
+            }
+            update() {
+                this.y -= this.speed;
+                if (this.y < -50) {
+                    this.y = height + 50;
+                    this.x = Math.random() * width;
+                    this.text = codeSymbols[Math.floor(Math.random() * codeSymbols.length)];
+                }
+            }
+            draw(isDark) {
+                ctx.font = `bold ${this.size}px monospace`;
+                ctx.fillStyle = isDark 
+                    ? `rgba(139, 92, 246, ${this.opacity})` // Violet
+                    : `rgba(59, 130, 246, ${this.opacity * 1.5})`; // Blue
+                ctx.fillText(this.text, this.x, this.y);
+            }
+        }
+
+        function init() {
+            nodes = [];
+            symbols = [];
+            for (let i = 0; i < maxNodes; i++) nodes.push(new TechNode());
+            for (let i = 0; i < maxSymbols; i++) symbols.push(new FloatingSymbol());
+        }
+
+        function drawLinesAndPackets(isDark) {
+            // Draw connections between nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    let dx = nodes[i].x - nodes[j].x;
+                    let dy = nodes[i].y - nodes[j].y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    
+                    if (dist < 140) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = isDark 
+                            ? `rgba(56, 189, 248, ${0.2 - dist/700})`
+                            : `rgba(37, 99, 235, ${0.15 - dist/933})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.stroke();
+                        
+                        // Data packet simulation (randomly along the line)
+                        if (Math.random() < 0.015) {
+                            let packetX = nodes[i].x - dx * Math.random();
+                            let packetY = nodes[i].y - dy * Math.random();
+                            ctx.beginPath();
+                            ctx.arc(packetX, packetY, 1.5, 0, Math.PI * 2);
+                            ctx.fillStyle = isDark ? '#fff' : '#1d4ed8';
+                            ctx.fill();
+                        }
+                    }
+                }
+                
+                // Draw connection to Mouse (Connectivity/Routing hub)
+                let mDx = mouse.x - nodes[i].x;
+                let mDy = mouse.y - nodes[i].y;
+                let mDist = Math.sqrt(mDx*mDx + mDy*mDy);
+                
+                if (mDist < mouse.radius) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = isDark 
+                        ? `rgba(167, 139, 250, ${0.5 - mDist/(mouse.radius*2)})` // Violet glow line
+                        : `rgba(37, 99, 235, ${0.4 - mDist/(mouse.radius*2.5)})`; // Blue line
+                    ctx.lineWidth = 1.5;
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                    
+                    // High-speed data packet towards mouse
+                    let t = (Date.now() % 1000) / 1000; // 0 to 1 repeatedly
+                    let px = nodes[i].x + mDx * t;
+                    let py = nodes[i].y + mDy * t;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 2, 0, Math.PI * 2);
+                    ctx.fillStyle = isDark ? '#c084fc' : '#2563eb';
+                    ctx.fill();
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            // Draw Floating Code Symbols first (background)
+            for (let symbol of symbols) {
+                symbol.update();
+                symbol.draw(isDark);
+            }
+            
+            // Draw Nodes and Networking Lines
+            drawLinesAndPackets(isDark);
+            for (let node of nodes) {
+                node.update();
+                node.draw(isDark);
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
     </script>
 </body>
 </html>
